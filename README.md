@@ -64,12 +64,12 @@ The script run_analysis.R was created in a way that the following operations wer
     data_final <- cbind(merged_data, data_part1)
     
 9. finally, renamed the abreviated fields like "f", "t", "Acc", "etc" to their respective full names.  Details below:
-# ^t --> time
-# ^f --> frequency
-# Acc --> Accelerometer
-# Gyro --> Gyroscope
-# Mag --> Magnitude
-# BodyBody --> Body
+ ^t --> time
+ ^f --> frequency
+ Acc --> Accelerometer
+ Gyro --> Gyroscope
+ Mag --> Magnitude
+ BodyBody --> Body
     names(data_final)<-gsub("^t", "time", names(data_final))
     names(data_final)<-gsub("^f", "frequency", names(data_final))
     names(data_final)<-gsub("Acc", "Accelerometer", names(data_final))
