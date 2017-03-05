@@ -27,34 +27,43 @@ The following steps were requested in the assignment:
 
 The script run_analysis.R was created in a way that the following operations were executed to comply with what was requested above:
 1. set the working environment
+```
     setwd("~pfilgueira/Dropbox/Pessoal/Especializacao/Data Science/Module 3")
     library(data.table)
-
+```
 2. load the two dataset files with the main data
+```
     data_test <- read.table("./UCI HAR Dataset/test/X_test.txt")   # test set
     data_train <- read.table("./UCI HAR Dataset/train/X_train.txt") # training set
-    
+```
+
 3. load the two dataset files with activity data
+```
     activity_test <- read.table("./UCI HAR Dataset/test/y_test.txt")   # test labels
     activity_train <- read.table("./UCI HAR Dataset/train/y_train.txt") # training labels
-
+```
 4. load the two dataset files with subject data
+```
     subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt") # subject who performed
     subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt") # subject who performed
-
+```
 5. merged, based on the rows, each of the categories above
+```
     merged_data <- rbind(data_train, data_test)
     merged_activity <- rbind(activity_train, activity_test)
     merged_subject <- rbind(subject_train, subject_test)
-    
+```    
 6. load the activity labels to facilitate the column names for the main data sets
+```
     activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")[,2]  # interested in the V2 column
-
+```
 7. eliminated all variables not related to mean and std deviation by using features_mean_sdv <- grep("mean()|std()", features)
+```
     features <- read.table("./UCI HAR Dataset/features.txt")[,2]
     features_mean_sdv <- grep("mean()|std()", features)
-
+```
 8. merged based on columns the 3 files already merged by rows before.   Each category crated one file that were merged together in just one.
+```
     names(merged_data) <- features
     merged_data <- merged_data[, features_mean_sdv] # only mean and std variation
     names(merged_activity) <- c("activity")
@@ -62,7 +71,7 @@ The script run_analysis.R was created in a way that the following operations wer
     
     data_part1 <- cbind(merged_subject, merged_activity)
     data_final <- cbind(merged_data, data_part1)
-    
+```    
 9. finally, renamed the abreviated fields like "f", "t", "Acc", "etc" to their respective full names.  Details below:
  ^t --> time
  ^f --> frequency
@@ -70,20 +79,23 @@ The script run_analysis.R was created in a way that the following operations wer
  Gyro --> Gyroscope
  Mag --> Magnitude
  BodyBody --> Body
+ ```
     names(data_final)<-gsub("^t", "time", names(data_final))
     names(data_final)<-gsub("^f", "frequency", names(data_final))
     names(data_final)<-gsub("Acc", "Accelerometer", names(data_final))
     names(data_final)<-gsub("Gyro", "Gyroscope", names(data_final))
     names(data_final)<-gsub("Mag", "Magnitude", names(data_final))
     names(data_final)<-gsub("BodyBody", "Body", names(data_final))
-
+```
 10. then, to complete the assignment, a tidy data file was created by aggregating the mean based on subject, activity and main data.
+```
     data_tidy <- aggregate(. ~subject + activity, data_final, mean)
-    
+```    
 11. ordered the file by subject and actvity and then, finally, write the final file tidydata.txt.
+```
     data_tidy <- data_tidy[order(data_tidy$subject, data_tidy$activity),]
     write.table(data_tidy, file = "tidydata.txt",row.name=FALSE)
-    
+```    
 That's all folks!
 
 
