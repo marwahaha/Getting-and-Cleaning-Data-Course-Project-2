@@ -139,7 +139,12 @@ angle(): Angle between to vectors.
 
 ## Fields above have been translated based on the following criteria:
 ```
-
+#^t --> time
+# ^f --> frequency
+# Acc --> Accelerometer
+# Gyro --> Gyroscope
+# Mag --> Magnitude
+# BodyBody --> Body
 
 names(data_final)<-gsub("^t", "time", names(data_final))
 names(data_final)<-gsub("^f", "frequency", names(data_final))
