@@ -32,43 +32,43 @@ The following steps were requested in the assignment:
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
 The script run_analysis.R was created in a way that the following operations were executed to comply with what was requested above:
-. set the working environment
+- set the working environment
 ```
     setwd("~pfilgueira/Dropbox/Pessoal/Especializacao/Data Science/Module 3")
     library(data.table)
 ```
-. load the two dataset files with the main data
+- load the two dataset files with the main data
 ```
     data_test <- read.table("./UCI HAR Dataset/test/X_test.txt")   # test set
     data_train <- read.table("./UCI HAR Dataset/train/X_train.txt") # training set
 ```
 
-. load the two dataset files with activity data
+- load the two dataset files with activity data
 ```
     activity_test <- read.table("./UCI HAR Dataset/test/y_test.txt")   # test labels
     activity_train <- read.table("./UCI HAR Dataset/train/y_train.txt") # training labels
 ```
-. load the two dataset files with subject data
+- load the two dataset files with subject data
 ```
     subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt") # subject who performed
     subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt") # subject who performed
 ```
-. merged, based on the rows, each of the categories above
+- merged, based on the rows, each of the categories above
 ```
     merged_data <- rbind(data_train, data_test)
     merged_activity <- rbind(activity_train, activity_test)
     merged_subject <- rbind(subject_train, subject_test)
 ```    
-. load the activity labels to facilitate the column names for the main data sets
+- load the activity labels to facilitate the column names for the main data sets
 ```
     activity_labels <- read.table("./UCI HAR Dataset/activity_labels.txt")[,2]  # interested in the V2 column
 ```
-. eliminated all variables not related to mean and std deviation by using features_mean_sdv <- grep("mean()|std()", features)
+- eliminated all variables not related to mean and std deviation by using features_mean_sdv <- grep("mean()|std()", features)
 ```
     features <- read.table("./UCI HAR Dataset/features.txt")[,2]
     features_mean_sdv <- grep("mean()|std()", features)
 ```
-. merged based on columns the 3 files already merged by rows before.   Each category crated one file that were merged together in just one.
+- merged based on columns the 3 files already merged by rows before.   Each category crated one file that were merged together in just one.
 ```
     names(merged_data) <- features
     merged_data <- merged_data[, features_mean_sdv] # only mean and std variation
@@ -78,7 +78,7 @@ The script run_analysis.R was created in a way that the following operations wer
     data_part1 <- cbind(merged_subject, merged_activity)
     data_final <- cbind(merged_data, data_part1)
 ```    
-. finally, renamed the abreviated fields like "f", "t", "Acc", "etc" to their respective full names.  Details below:
+- finally, renamed the abreviated fields like "f", "t", "Acc", "etc" to their respective full names.  Details below:
 ```
     #^t --> time
     # ^f --> frequency
@@ -94,11 +94,11 @@ The script run_analysis.R was created in a way that the following operations wer
     names(data_final)<-gsub("Mag", "Magnitude", names(data_final))
     names(data_final)<-gsub("BodyBody", "Body", names(data_final))
 ```
-. then, to complete the assignment, a tidy data file was created by aggregating the mean based on subject, activity and main data.
+- then, to complete the assignment, a tidy data file was created by aggregating the mean based on subject, activity and main data.
 ```
     data_tidy <- aggregate(. ~subject + activity, data_final, mean)
 ```    
-. ordered the file by subject and actvity and then, finally, write the final file tidydata.txt.
+- ordered the file by subject and actvity and then, finally, write the final file tidydata.txt.
 ```
     data_tidy <- data_tidy[order(data_tidy$subject, data_tidy$activity),]
     write.table(data_tidy, file = "tidydata.txt",row.name=FALSE)
