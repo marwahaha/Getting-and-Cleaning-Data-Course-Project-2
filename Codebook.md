@@ -137,6 +137,18 @@ angle(): Angle between to vectors.
 | fbodybodygyrojerkmag-mean | Mean frequency of magnitude of body gyroscope jerk measurement
 | fbodybodygyrojerkmag-std | Standard deviation frequency of magnitude of body gyroscope jerk measurement
 
+## Fields above have been translated based on the following criteria:
+```
+
+
+names(data_final)<-gsub("^t", "time", names(data_final))
+names(data_final)<-gsub("^f", "frequency", names(data_final))
+names(data_final)<-gsub("Acc", "Accelerometer", names(data_final))
+names(data_final)<-gsub("Gyro", "Gyroscope", names(data_final))
+names(data_final)<-gsub("Mag", "Magnitude", names(data_final))
+names(data_final)<-gsub("BodyBody", "Body", names(data_final))
+```
+
 ## Final Tidy Data with the Relevant Calculated Units
 ```
 'data.frame':	180 obs. of  81 variables:
