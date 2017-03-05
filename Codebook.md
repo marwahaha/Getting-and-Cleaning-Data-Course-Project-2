@@ -113,12 +113,12 @@ angle(): Angle between to vectors.
 | fbodyacc-std-x | Standard deviation of frequency of body acceleration for X direction
 | fbodyacc-std-y | Standard deviation of frequency of body acceleration for Y direction
 | fbodyacc-std-z | Standard deviation of frequency of body acceleration for Z direction
-| fbodyaccjerk-mean-x | Mean frequency of body accerlation jerk for X direction
-| fbodyaccjerk-mean-y | Mean frequency of body accerlation jerk for Y direction
-| fbodyaccjerk-mean-z | Mean frequency of body accerlation jerk for Z direction
-| fbodyaccjerk-std-x | Standard deviation frequency of body accerlation jerk for X direction
-| fbodyaccjerk-std-y | Standard deviation frequency of body accerlation jerk for Y direction
-| fbodyaccjerk-std-z | Standard deviation frequency of body accerlation jerk for Z direction
+| fbodyaccjerk-mean-x | Mean frequency of body acceleration jerk for X direction
+| fbodyaccjerk-mean-y | Mean frequency of body acceleration jerk for Y direction
+| fbodyaccjerk-mean-z | Mean frequency of body acceleration jerk for Z direction
+| fbodyaccjerk-std-x | Standard deviation frequency of body acceleration jerk for X direction
+| fbodyaccjerk-std-y | Standard deviation frequency of body acceleration jerk for Y direction
+| fbodyaccjerk-std-z | Standard deviation frequency of body acceleration jerk for Z direction
 | fbodygyro-mean-x | Mean frequency of body gyroscope measurement for X direction
 | fbodygyro-mean-y | Mean frequency of body gyroscope measurement for Y direction
 | fbodygyro-mean-z | Mean frequency of body gyroscope measurement for Z direction
