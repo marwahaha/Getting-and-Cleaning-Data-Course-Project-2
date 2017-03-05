@@ -41,8 +41,8 @@ fBodyGyroMag
 fBodyGyroJerkMag
 ```
 
-The set of variables that were estimated from these signals are: 
-
+## The set of variables that were estimated from these signals are: 
+```
 mean(): Mean value
 std(): Standard deviation
 mad(): Median absolute deviation 
@@ -60,7 +60,7 @@ skewness(): skewness of the frequency domain signal
 kurtosis(): kurtosis of the frequency domain signal 
 bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
 angle(): Angle between to vectors.
-
+```
 
 ### Variable Descriptions
 
