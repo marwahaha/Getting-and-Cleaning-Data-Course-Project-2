@@ -78,7 +78,7 @@ The script run_analysis.R was created in a way that the following operations wer
     data_part1 <- cbind(merged_subject, merged_activity)
     data_final <- cbind(merged_data, data_part1)
 ```    
-- finally, renamed the abreviated fields like "f", "t", "Acc", "etc" to their respective full names.  Details below:
+- finally, renamed the abbreviated fields like "f", "t", "Acc", "etc" to their respective full names.  Details below:
 ```
     #^t --> time
     # ^f --> frequency
